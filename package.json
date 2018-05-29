@@ -1,0 +1,25 @@
+{
+  "name": "d4u-web-platform",
+  "version": "0.0.1",
+  "description": " Aggregator site for logistics companies ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AFCG-COMPANY/D4U-WEB-PLATFORM.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Fedor Arbuzov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AFCG-COMPANY/D4U-WEB-PLATFORM/issues"
+  },
+  "homepage": "https://github.com/AFCG-COMPANY/D4U-WEB-PLATFORM#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
