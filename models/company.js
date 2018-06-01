@@ -5,7 +5,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Company = new Schema({
-    name: String,
-    description: String,
-    registrationDate: Date
+    name: String
 });
+
+
+module.exports = Company
