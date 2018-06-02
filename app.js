@@ -1,9 +1,14 @@
 const
     express = require('express')
     exphbs  = require('express-handlebars')
-
+    cookieParser = require('cookie-parser')
 const
     app = express()
+
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
+app.use(cookieParser())
 
 const
     port = process.env.PORT || 8080
@@ -12,9 +17,6 @@ const
     indexRouter = require('./controllers/index')
     usersRouter = require('./controllers/user')
     apiRouter = require('./controllers/api')
-
-app.engine('handlebars', exphbs({defaultLayout: 'main'}))
-app.set('view engine', 'handlebars')
 
 
 app.use('/', indexRouter)
