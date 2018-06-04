@@ -1,23 +1,22 @@
 <h2>HTML Forms</h2>
 
-<form>
-    First name:<br>
-    <input class="inputEmail" type="text" name="login" value="example@company.com">
-    <br>
-    Last name:<br>
-    <input type="password" name="password">
-    <br><br>
-    <input class="button" type="submit" value="Login">
-</form>
+First name:<br>
+<input class="inputEmail" type="text" name="login" value="example@company.com">
+<br>
+Last name:<br>
+<input class="inputPass" type="password" name="password">
+<br><br>
+<input class="button" type="submit" value="Login">
 
 <p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
 
 <script>
-    var sendEmailBtn = document.getElementsByClassName('button')[0];
-    var sendEmailInput = document.getElementsByClassName('inputEmail')[0];
-    console.log(sendEmailBtn, sendEmailInput);
+    var sendEmailBtn = document.getElementsByClassName('button')[0]
+    var sendEmailInput = document.getElementsByClassName('inputEmail')[0]
+    var sendPassInput = document.getElementsByClassName('inputPass')[0]
+    console.log(sendEmailBtn, sendEmailInput, sendPassInput)
     sendEmailBtn.onclick = function () {
-        alert(sendEmailInput.value);
+        alert(sendEmailInput.value + ' ' + sendPassInput.value)
     }
 
 </script>
