@@ -3,8 +3,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    // стартовая страница для показа поиска и результатов
-
     var cookie = req.cookies.cookieName;
     if (cookie === undefined) {
         // no: set a new cookie
