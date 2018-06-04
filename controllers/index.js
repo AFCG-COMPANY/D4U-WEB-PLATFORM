@@ -3,6 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    // стартовая страница для показа поиска и результатов
+
     var cookie = req.cookies.cookieName;
     if (cookie === undefined) {
         // no: set a new cookie
@@ -12,7 +14,13 @@ router.get('/', function(req, res, next) {
     else{
         console.log(cookie)
     }
-    res.render('home');
+    res.render('home', {user: '123'});
 });
+
+router.post('/', function (req, res, next) {
+    // стартовая страница после регистрации или аутентификации
+
+    res.redirect('api/api/')
+})
 
 module.exports = router;
