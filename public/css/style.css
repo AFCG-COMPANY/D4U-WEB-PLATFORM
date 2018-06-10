@@ -21,6 +21,10 @@
     width: 80%;
 }
 
+.visually-hidden {
+    display:none;
+}
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
