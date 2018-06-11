@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2 class='formTitle'>Login</h2>
 
 Email:<br>
 <input class="inputEmail" type="text" name="login" value="example@company.com">
@@ -8,15 +8,33 @@ Password:<br>
 <br>
 <input class="button" type="submit" value="Login">
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+<p class='switch'>Registration</p>
 
 <script>
+    var formTitle = document.getElementsByClassName('formTitle')[0]
+    var switchLogReg = document.getElementsByClassName('switch')[0]
+    switchLogReg.onclick = function () {
+        if (formTitle.innerHTML == 'Login') {
+            formTitle.innerHTML = 'Reistration'
+            switchLogReg.innerHTML = 'Login'
+        }
+        else {
+            formTitle.innerHTML = 'Login'
+            switchLogReg.innerHTML = 'Registration'
+        }
+    }
     var sendEmailBtn = document.getElementsByClassName('button')[0]
     var sendEmailInput = document.getElementsByClassName('inputEmail')[0]
     var sendPassInput = document.getElementsByClassName('inputPass')[0]
-    console.log(sendEmailBtn, sendEmailInput, sendPassInput)
     sendEmailBtn.onclick = function () {
         alert(sendEmailInput.value + ' ' + sendPassInput.value)
+        fetch('/api/auth')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(myJson) {
+                    console.log(myJson);
+                });
     }
 
 </script>

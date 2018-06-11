@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/api', function(req, res, next) {
-    res.send('hello api');
+    res.send({'status': 'ok'});
 });
 
 router.get('/login', function(req, res, next) {
