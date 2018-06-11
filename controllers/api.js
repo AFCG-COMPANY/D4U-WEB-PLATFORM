@@ -6,6 +6,11 @@ router.get('/api', function(req, res, next) {
     res.send({'status': 'ok'});
 });
 
+router.get('/auth', function(req, res, next) {
+    console.log(req)
+    res.send({'status': 'ok'});
+});
+
 router.get('/login', function(req, res, next) {
     res.send('hello api');
 });
