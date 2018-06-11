@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/AFCG-COMPANY/D4U-WEB-PLATFORM#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mongodb": "^3.1.0-beta4",
