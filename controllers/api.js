@@ -1,6 +1,15 @@
-var express = require('express')
-var router = express.Router()
 
+var
+    express = require('express')
+
+var
+    router = express.Router()
+
+const
+    MongoClient = require('mongodb').MongoClient;
+
+const
+    mongo_db_url = require('../../config/keys').mongo_db_url;
 
 router.post('/auth', function(req, res, next) {
     userResp = req.body
