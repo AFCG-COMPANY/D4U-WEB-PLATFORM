@@ -2,6 +2,7 @@ const
     express = require('express')
     exphbs  = require('express-handlebars')
     cookieParser = require('cookie-parser')
+    bodyParser = require('body-parser')
 const
     app = express()
 
@@ -10,6 +11,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.use(cookieParser())
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json())
 
 const
     port = process.env.PORT || 8080

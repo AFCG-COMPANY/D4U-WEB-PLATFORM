@@ -7,7 +7,7 @@ router.get('/api', function(req, res, next) {
 });
 
 router.post('/auth', function(req, res, next) {
-    console.log(req)
+    console.log(req.body)
     res.send({'status': 'ok'});
 });
 
