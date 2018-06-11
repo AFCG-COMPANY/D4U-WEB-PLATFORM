@@ -18,11 +18,13 @@ const
 
 const
     indexRouter = require('./controllers/index')
+    aboutRouter = require('./controllers/about')
     usersRouter = require('./controllers/user')
     apiRouter = require('./controllers/api')
 
 
 app.use('/', indexRouter)
+app.use('/', aboutRouter)
 app.use('/profile', usersRouter)
 app.use('/api', apiRouter)
 
