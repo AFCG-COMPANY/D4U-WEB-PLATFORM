@@ -16,10 +16,13 @@ router.post('/auth', function(req, res, next) {
         MongoClient.connect(mongo_db_url, function (err, db) {
             if (err) throw err;
             const dbo = db.db("d4u");
-            dbo.collection("users").findOne({login: userResp['login'], password: userResp['password']}, function(err, result) {
-                console.log(result)
-                if (result.length === 1){
-                    console.log(result['cookie'])
+            dbo.collection("users").findOne({login: userResp['login'], password: userResp['password'], confirmed: true}, function(err, result) {
+                if (result !== null) {
+                    res.cookie('token', userToken, { maxAge: 900000, httpOnly: true })
+                    res.redirect('/')
+                }
+                else {
+                    res.send({'status': 'ok', 'message': 'такого нет'})
                 }
                 db.close()
             })
@@ -44,7 +47,11 @@ router.post('/auth', function(req, res, next) {
 
                     // создаем словарь для записи в базу(дата нужна для удаления просроченных токенов)
                     const date = new Date()
-                    const userInfo = {login: userResp['login'], password: userResp['password'], regDate: date, token: secretToken}
+                    const userInfo = {login: userResp['login'],
+                                      password: userResp['password'],
+                                      regDate: date,
+                                      token: secretToken,
+                                      confirmed: false}
 
                     // запись в базу
                     dbo.collection("users").insertOne(userInfo, function(err, result) {
@@ -66,8 +73,11 @@ router.get('/confirm/:token', function (req, res) {
     MongoClient.connect(mongo_db_url, function (err, db) {
         if (err) throw err;
         const dbo = db.db("d4u");
-        dbo.collection("users").findOne({token: userToken}, function(err, result) {
+        dbo.collection("users").findOne({token: userToken, confirmed: false}, function(err, result) {
             if (result !== null){
+                dbo.collection("users").updateOne({token: userToken, confirmed: false}, { $set: {confirmed: true}}, function(err, result) {
+                    if (err) throw err
+                })
                 res.cookie('token', userToken, { maxAge: 900000, httpOnly: true })
                 res.redirect('/')
             }
