@@ -5,6 +5,7 @@ const
     router = express.Router()
     MongoClient = require('mongodb').MongoClient
 
+    sendEmailForNewUser = require('../utils/email_processing').sendEmailForNewUser
     mongo_db_url = require('../config/keys').mongo_db_url
 
 router.post('/auth', function(req, res, next) {
@@ -35,8 +36,7 @@ router.post('/auth', function(req, res, next) {
                     res.send({'status': 'ok', 'message': 'Такой емаил уже есть!!'})
                 }
                 else{
-                    var secretToken = null
-                    require('crypto').randomBytes(48, function(ex, buf) { secretToken = buf.toString('hex') })
+                    const secretToken = crypto.randomBytes(48).toString('hex')
                     //sendEmailForNewUser()
                     const date = new Date()
                     const userInfo = {login: userResp['login'], password: userResp['password'], regDate: date, token: secretToken}
