@@ -36,10 +36,17 @@ router.post('/auth', function(req, res, next) {
                     res.send({'status': 'ok', 'message': 'Такой емаил уже есть!!'})
                 }
                 else{
+                    // генерируем токен для пользовотеля
                     const secretToken = crypto.randomBytes(48).toString('hex')
-                    //sendEmailForNewUser(userResp['login'], secretToken)
+
+                    // отправляем уникальную ссылку на почту
+                    sendEmailForNewUser(userResp['login'], secretToken)
+
+                    // создаем словарь для записи в базу(дата нужна для удаления просроченных токенов)
                     const date = new Date()
                     const userInfo = {login: userResp['login'], password: userResp['password'], regDate: date, token: secretToken}
+
+                    // запись в базу
                     dbo.collection("users").insertOne(userInfo, function(err, result) {
                         console.log(result)
                         if (err) throw err
