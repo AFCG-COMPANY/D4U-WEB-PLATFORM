@@ -67,7 +67,6 @@ router.get('/confirm/:token', function (req, res) {
         if (err) throw err;
         const dbo = db.db("d4u");
         dbo.collection("users").findOne({token: userToken}, function(err, result) {
-            console.log(result)
             if (result !== null){
                 res.cookie('token', userToken, { maxAge: 900000, httpOnly: true })
                 res.redirect('/')
