@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    var cookie = req.cookies.cookieName;
+    var cookie = req.cookies.token;
     /*
     if (cookie === undefined) {
         // no: set a new cookie

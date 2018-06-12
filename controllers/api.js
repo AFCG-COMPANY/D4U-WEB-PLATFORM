@@ -60,4 +60,25 @@ router.post('/auth', function(req, res, next) {
     }
 });
 
+
+router.get('/confirm/:token', function (req, res) {
+    const userToken = req.params['token']
+    MongoClient.connect(mongo_db_url, function (err, db) {
+        if (err) throw err;
+        const dbo = db.db("d4u");
+        dbo.collection("users").findOne({token: userToken}, function(err, result) {
+            console.log(result)
+            if (result !== null){
+                res.cookie('token', userToken, { maxAge: 900000, httpOnly: true })
+                res.redirect('/')
+            }
+            else{
+                res.status(404).send('error')
+            }
+            db.close()
+        })
+    })
+})
+
+
 module.exports = router
