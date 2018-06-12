@@ -1,5 +1,5 @@
 'use strict'
 Object.defineProperty(exports, '__esModule', { value: true })
 exports.mongo_db_url = 'mongodb://fedor.a.hope:MGTA2019@ds016098.mlab.com:16098/d4u'
-exports.email = '1'
-exports.password = '12'
+exports.email = 'arbuzovfp@gmail.com'
+exports.password = 'MGTA2019'

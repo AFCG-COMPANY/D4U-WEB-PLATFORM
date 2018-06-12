@@ -1,9 +1,10 @@
 'use strict';
+const nodemailer = require('nodemailer')
+const email = require('../config/keys').email
+const password = require('../config/keys').password
+
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const
-    email = require('../config/keys').email
-    pass = require('../config/keys').password
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -11,16 +12,16 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: email,
-        pass: pass
+        pass: password
     }
 });
 
-const sendEmail = function (template, email) {
+const sendEmail = function (template, subject, email) {
 
     var mailOptions = {
-        from: config.emailInfo.email,
+        from: email,
         to: email,
-        subject: 'Sending Email using Node.js',
+        subject: subject,
         text: template
     };
 
@@ -33,8 +34,15 @@ const sendEmail = function (template, email) {
     });
 }
 
-function sendEmailForNewUser(userAnswer, rightAnswer, systemType) {
+function sendEmailForNewUser(email, token) {
+    sendEmail(token, 'тест', email)
 
 }
-exports.sendEmailForNewUser = sendEmailForNewUser;
+
+function sendEmailForgotPassword(email, password) {
+    sendEmail(password, 'забыли пароль', email)
+}
+
+exports.sendEmailForNewUser = sendEmailForNewUser
+exports.sendEmailForgotPassword = sendEmailForgotPassword
 

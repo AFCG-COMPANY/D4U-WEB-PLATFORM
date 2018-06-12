@@ -37,7 +37,7 @@ router.post('/auth', function(req, res, next) {
                 }
                 else{
                     const secretToken = crypto.randomBytes(48).toString('hex')
-                    //sendEmailForNewUser()
+                    //sendEmailForNewUser(userResp['login'], secretToken)
                     const date = new Date()
                     const userInfo = {login: userResp['login'], password: userResp['password'], regDate: date, token: secretToken}
                     dbo.collection("users").insertOne(userInfo, function(err, result) {
