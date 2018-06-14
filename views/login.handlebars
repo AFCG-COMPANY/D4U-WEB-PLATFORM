@@ -48,7 +48,9 @@ Password:<br>
                                 alert('!!!' + response['message'])
                             }
                             else if ('token' in response){
-                                alert('!!!' + response['token'])
+                                alert(response['token'])
+                                document.cookie = 'token=' + response['token'] + '; path=/'
+                                window.location.href = "/";
                             }
 
                         }
