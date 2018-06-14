@@ -49,7 +49,7 @@ Password:<br>
                             }
                             else if ('token' in response){
                                 alert(response['token'])
-                                document.cookie = 'token=' + response['token'] + '; path=/'
+                                document.cookie = 'token=' + response['token'] + ';domain=d4u-web-platform.herokuapp.com;path=/'
                                 window.location.href = "/";
                             }
 
