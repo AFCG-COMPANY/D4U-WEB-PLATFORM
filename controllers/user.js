@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/login', function(req, res, next) {
-    res.render('login')
+    var cookie = req.cookies.token;
+    res.render('login', {user: cookie})
 });
 
 

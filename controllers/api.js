@@ -21,7 +21,7 @@ router.post('/auth', function(req, res, next) {
                 if (result !== null) {
                     //res.cookie('token', result['token'], { maxAge: 900000, httpOnly: true })
                     //res.redirect('/')
-                    res.send({'status': '200', 'token': result['token']})
+
                 }
                 else {
                     res.send({'status': '400', 'message': 'такого нет'})
