@@ -17,10 +17,4 @@ router.get('/', function(req, res, next) {
     res.render('home', {user: cookie});
 });
 
-router.post('/', function (req, res, next) {
-    // стартовая страница после регистрации или аутентификации
-
-    res.redirect('api/api/')
-})
-
 module.exports = router;

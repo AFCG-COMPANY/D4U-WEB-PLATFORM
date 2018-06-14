@@ -9,7 +9,7 @@ router.get('/login', function(req, res, next) {
 
 
 router.get('/logout', function(req, res, next) {
-    res.clearCookie('cookieName')
+    res.clearCookie('token')
     res.redirect('/')
 });
 

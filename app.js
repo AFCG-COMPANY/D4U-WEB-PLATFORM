@@ -25,7 +25,7 @@ const
 
 app.use('/', indexRouter)
 app.use('/', aboutRouter)
-app.use('/profile', usersRouter)
+app.use('/', usersRouter)
 app.use('/api', apiRouter)
 
 
