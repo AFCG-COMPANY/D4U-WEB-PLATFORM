@@ -27,14 +27,32 @@ Password:<br>
     var sendEmailInput = document.getElementsByClassName('inputEmail')[0]
     var sendPassInput = document.getElementsByClassName('inputPass')[0]
     sendEmailBtn.onclick = function () {
-        alert(sendEmailInput.value + ' ' + sendPassInput.value)
-        fetch('/api/auth')
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(myJson) {
-                    console.log(myJson);
-                });
+        url = '/api/auth'
+        data = {'type': sendEmailBtn.value, 'login': sendEmailInput.value, 'password': sendPassInput.value}
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response =>
+                    {
+                        console.log('Success:', response);
+                        if (response['status'] === '400'){
+                            alert(response['message'])
+                        }
+                        else if (response['status'] === '200'){
+                            if ('message' in response){
+                                alert('!!!' + response['message'])
+                            }
+                            else if ('token' in response){
+                                alert('!!!' + response['token'])
+                            }
+
+                        }
+                    })
     }
 
 </script>
