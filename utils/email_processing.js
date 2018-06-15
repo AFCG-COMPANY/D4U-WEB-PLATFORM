@@ -36,13 +36,13 @@ const sendEmail = function (template, subject, email) {
 
 function sendEmailForNewUser(email, token) {
     sendEmail(token, 'тест', email)
-
 }
 
-function sendEmailForgotPassword(email, password) {
-    sendEmail(password, 'забыли пароль', email)
+function sendEmailForForogtUser(email, password){
+    sendEmail(password, 'тест', email)
 }
+
 
 exports.sendEmailForNewUser = sendEmailForNewUser
-exports.sendEmailForgotPassword = sendEmailForgotPassword
+exports.sendEmailForForogtUser = sendEmailForForogtUser
 

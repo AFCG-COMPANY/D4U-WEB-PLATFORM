@@ -4,3 +4,31 @@ Email:<br>
 <input class="inputEmail" type="text" name="login" value="example@company.com">
 <br>
 <input class="button" type="submit" value="Forgot">
+
+<script>
+    var sendEmailBtn = document.getElementsByClassName('button')[0]
+    var sendEmailInput = document.getElementsByClassName('inputEmail')[0]
+    sendEmailBtn.onclick = function () {
+        url = '/api/forgot'
+        data = {'login': sendEmailInput.value}
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response =>
+                {
+                    console.log('Success:', response)
+                    if (response['status'] === '400'){
+                        alert(response['message'])
+                    }
+                    else if (response['status'] === '200'){
+                        alert(response['message'])
+                    }
+                })
+    }
+
+</script>

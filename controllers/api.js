@@ -6,6 +6,7 @@ const
     MongoClient = require('mongodb').MongoClient
 
     sendEmailForNewUser = require('../utils/email_processing').sendEmailForNewUser
+    sendEmailForForogtUser = require('../utils/email_processing').sendEmailForForogtUser
     mongo_db_url = require('../config/keys').mongo_db_url
 
 router.post('/auth', function(req, res, next) {
@@ -77,9 +78,9 @@ router.post('/forgot', function (req, res, next) {
         dbo.collection("users").findOne({login: userResp['login'], confirmed: true}, function(err, result) {
             console.log(result)
             if (result !== null) {
-                //res.cookie('token', result['token'], { maxAge: 900000, httpOnly: true })
-                //res.redirect('/')
-                res.send({'status': '200', 'token': result['token']})
+                console.log(result)
+                sendEmailForForogtUser(userResp['login'], result['password'])
+                res.send({'status': '200', 'message': 'все отправили'})
             }
             else {
                 res.send({'status': '400', 'message': 'такого нет'})
