@@ -18,12 +18,38 @@ Date2<br>
 <input class="button" type="submit" value="Search">
 
 <script>
+    getCookie = function(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) return match[2];
+    }
+
     var sendSearchBtn = document.getElementsByClassName('button')[0]
     var date1 = document.getElementsByClassName('date1')[0]
     var date2 = document.getElementsByClassName('date2')[0]
     var city1 = document.getElementsByClassName('city1')[0]
     var city2 = document.getElementsByClassName('city2')[0]
     sendSearchBtn.onclick = function () {
-        alert(date1.value + ' ' + date2.value + ' ' + city1.value + ' ' + city2.value)
+        const user = getCookie('token')
+        url = '/api/request'
+        data = {'user': user, 'date1': date1.value, 'date2': date2.value, 'city1': city1.value, 'city2': city2.value}
+        console.log(data)
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response =>
+                {
+                    console.log('Success:', response);
+                    if (response['status'] === '400'){
+                        alert(response['message'])
+                    }
+                    else if (response['status'] === '200'){
+                        alert(response['message'])
+                    }
+                })
     }
 </script>
