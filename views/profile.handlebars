@@ -40,7 +40,7 @@
         border-top: none;
     }
 
-    #London {
+    #profile {
         display: block;
     }
 </style>
@@ -50,24 +50,30 @@
 <p>Click on the buttons inside the tabbed menu:</p>
 
 <div class="tab">
-    <button class="tablinks active" onclick="openCity(event, 'London')">London</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    <button class="tablinks active" onclick="openCity(event, 'profile')">Профиль</button>
+    <button class="tablinks" onclick="openCity(event, 'partnership')">Партнерство</button>
+    <button class="tablinks" onclick="openCity(event, 'payments')">Платежи</button>
+    <button class="tablinks" onclick="openCity(event, 'settings')">Настройки</button>
 </div>
 
-<div id="London" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
+<div id="profile" class="tabcontent">
+    <h3>Профиль</h3>
+
 </div>
 
-<div id="Paris" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
+<div id="partnership" class="tabcontent">
+    <h3>Партнерство</h3>
+
 </div>
 
-<div id="Tokyo" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
+<div id="payments" class="tabcontent">
+    <h3>Платежи</h3>
+
+</div>
+
+<div id="settings" class="tabcontent">
+    <h3>Настройки</h3>
+
 </div>
 
 <script>
