@@ -1,10 +1,15 @@
 <div class="modal">
-<h2 class="modal__inner">Восстановление доступа</h2>
 
-<p class="modal__header">Забыли пароль или потеряли доступ к профилю? Введите привязанную к профилю эл. почту, мы отправим вам письмо со ссылкой для восстановления.</p>
-<input class="inputEmail" type="text" name="login" value="example@company.com">
-<br>
-<input class="button" type="submit" value="Forgot">
+    <h2 class="modal__inner">Восстановление доступа</h2>
+
+    <p class="modal__header">Забыли пароль или потеряли доступ к профилю? Введите привязанную к профилю эл. почту, мы отправим вам письмо со ссылкой для восстановления.</p>
+
+    <div class="modal__form">
+        <input class="input inputEmail" type="text" name="login" value="Эл. почта">
+
+        <input class="button" type="submit" value="Отправить">
+    </div>
+
 </div>
 <script>
     var sendEmailBtn = document.getElementsByClassName('button')[0]
