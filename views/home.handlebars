@@ -15,6 +15,16 @@ Date1<br>
 <input type="date" name="date1"  class="date1"><br>
 Date2<br>
 <input type="date" name="date2"  class="date2"><br>
+Тип перевозки<br>
+<input type="text" name="date1" class="transport_type" list="transport_types">
+<datalist id="transport_types">
+    <option value="Железнодорожные">
+    <option value="Морские">
+    <option value="Авиационные">
+    <option value="Автоперевозки">
+    <option value="Мультимодальные">
+</datalist><br>
+
 <input class="button" type="submit" value="Search">
 
 <script>
@@ -28,10 +38,18 @@ Date2<br>
     var date2 = document.getElementsByClassName('date2')[0]
     var city1 = document.getElementsByClassName('city1')[0]
     var city2 = document.getElementsByClassName('city2')[0]
+    var transport_type = document.getElementsByClassName('transport_type')[0]
     sendSearchBtn.onclick = function () {
         const user = getCookie('token')
         url = '/api/request'
-        data = {'user': user, 'date1': date1.value, 'date2': date2.value, 'city1': city1.value, 'city2': city2.value}
+        data = {
+            'user': user,
+            'date1': date1.value,
+            'date2': date2.value,
+            'city1': city1.value,
+            'city2': city2.value,
+            'transport_type': transport_type.value
+            }
         console.log(data)
         fetch(url, {
             method: 'POST', // or 'PUT'
