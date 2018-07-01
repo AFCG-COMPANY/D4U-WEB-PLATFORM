@@ -39,3 +39,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+.navbar-inverse {
+    background-color: #5c1b00;
+    border-color: #5c1b00;
+}
