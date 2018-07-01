@@ -1,9 +1,24 @@
-var express = require('express');
-var router = express.Router();
+var 
+    express = require('express')
+    router = express.Router()
+
+const
+    findName = require('../utils/find_name').findName
+
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    var cookie = req.cookies.token;
+router.get('/', async function(req, res, next) {
+    try {
+        const cookie = req.cookies.token
+        console.log(cookie)
+        var userName = await findName(cookie)
+        console.log(userName)
+        res.render('home', {user: userName})
+    } catch (e) {
+    //this will eventually be handled by your error handling middleware
+        next(e) 
+    }
     /*
     if (cookie === undefined) {
         // no: set a new cookie
@@ -14,7 +29,7 @@ router.get('/', function(req, res, next) {
         console.log(cookie)
     }
     */
-    res.render('home', {user: cookie});
-});
+    
+})
 
-module.exports = router;
+module.exports = router

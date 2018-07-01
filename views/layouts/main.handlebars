@@ -28,11 +28,10 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         {{#if user}}
-        <li><a href="#about">{{user}}</a></li>
-        <li><a href="#services">Выход</a></li>
+        <li><a href="/profile">{{user}}</a></li>
+        <li><a href="/logout">Выход</a></li>
         {{else}}
-        <li><a href="#about">Регистрация</a></li>
-        <li><a href="#services">Вход</a></li>
+        <li><a href="/login">Вход</a></li>
         {{/if}}
       </ul>
     </div>
