@@ -129,5 +129,7 @@ router.post('/request', function (req, res) {
     })
 })
 
+router.use('/', require('./api/profile/save_image'));
+
 
 module.exports = router

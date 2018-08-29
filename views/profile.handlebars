@@ -79,15 +79,27 @@
         <div class="grid__cell">
             <div class="form__group">
                 <h4>Название компании</h4>
-                <input type="text" class="field field--text">
+                <input type="text" class="field field--text company_name">
             </div>
 
             <div class="form__group">
                 <h4>Сайт</h4>
-                <input type="text" class="field field--text">
+                <input type="text" class="field field--text company_site">
+
+            </div>
+
+            <div class="form__group">
+                <h4>Изображение профиля</h4>
+                <input type="file" id="filechooser">
+                <button id="save_profile_image" class="button button--wide" type="submit">Сохранить</button>
+            </div>
+
+            <div class="form__group">
+                <h4>Описание компании</h4>
+                <textarea id="subject" name="subject" placeholder="Расскажите о компании..." style="height:200px"></textarea>
             </div>
             <div class="form__group form__group--controls">
-                <button class="button button--wide" type="submit" data-submit-text="Сохраняю…">Сохранить</button>
+                <button class="button button--wide" type="submit">Сохранить</button>
             </div>
         </div>
         <div class="grid__cell">
@@ -98,6 +110,8 @@
 </div>
 
 <script>
+
+    // нажатие вкладок
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -111,6 +125,8 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
     }
+
+    // отрисовка графика
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -129,6 +145,33 @@
 
         // Configuration options go here
         options: {}
-    });
+    })
+
+    // сохранение настроек
+    function uploadFile() {
+        console.log($('#filechooser'));
+        var blobFile = $('#filechooser')[0].files[0];
+        var formData = new FormData();
+        formData.append("fileToUpload", blobFile);
+
+        $.ajax({
+            url: "/api/saveprofileimage",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                // .. do something
+            },
+            error: function(jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage); // Optional
+            }
+        });
+    }
+
+    var saveProfileImageBtn = document.getElementById("save_profile_image");
+    saveProfileImageBtn.onclick = function () {
+        uploadFile();
+    }
 </script>
 </div>
