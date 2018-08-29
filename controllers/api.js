@@ -130,6 +130,6 @@ router.post('/request', function (req, res) {
 })
 
 router.use('/', require('./api/profile/save_image'));
-
+router.use('/', require('./api/profile/save_user_info'));
 
 module.exports = router

@@ -99,7 +99,7 @@
                 <textarea id="subject" name="subject" placeholder="Расскажите о компании..." style="height:200px"></textarea>
             </div>
             <div class="form__group form__group--controls">
-                <button class="button button--wide" type="submit">Сохранить</button>
+                <button id="save_profile_info" class="button button--wide" type="submit">Сохранить</button>
             </div>
         </div>
         <div class="grid__cell">
@@ -147,7 +147,7 @@
         options: {}
     })
 
-    // сохранение настроек
+    // сохранение логотипа
     function uploadFile() {
         console.log($('#filechooser'));
         var blobFile = $('#filechooser')[0].files[0];
@@ -169,9 +169,26 @@
         });
     }
 
+    // сохранение информации
+    function uploadInfo() {
+        console.log('uploadinfo');
+        $.post("/api/saveprofileinfo",
+                {
+                    name: "Donald Duck",
+                    city: "Duckburg"
+                });
+        console.log('finish');
+    }
+
+
     var saveProfileImageBtn = document.getElementById("save_profile_image");
     saveProfileImageBtn.onclick = function () {
         uploadFile();
+    }
+
+    var saveProfileInfoBtn = document.getElementById("save_profile_info");
+    saveProfileInfoBtn.onclick = function () {
+        uploadInfo();
     }
 </script>
 </div>
