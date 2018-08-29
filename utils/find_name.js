@@ -14,7 +14,10 @@ async function findName(cookie) {
     let dbo = db.db('d4u')
     let result = await dbo.collection("users").findOne({token: cookie, confirmed: true})
     console.log(result)
-    return 'компания'
+    if ('name' in result){
+        return result['name']
+    }
+    return 'Профиль'
 }
 
 exports.findName = findName

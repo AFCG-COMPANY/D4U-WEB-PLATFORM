@@ -1,5 +1,9 @@
-var express = require('express')
-var router = express.Router()
+var 
+    express = require('express')
+    router = express.Router()
+
+const
+    findName = require('../utils/find_name').findName
 
 
 router.get('/login', function(req, res, next) {
@@ -13,13 +17,14 @@ router.get('/login', function(req, res, next) {
 })
 
 
-router.get('/profile', function(req, res, next) {
+router.get('/profile', async function(req, res, next) {
     var cookie = req.cookies.token
     if (cookie === undefined){
         res.redirect('/')
     }
     else {
-        res.render('profile', {user: cookie})
+        var userName = await findName(cookie)
+        res.render('profile', {user: userName})
     }
 })
 

@@ -9,16 +9,12 @@ const
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-    try {
+    
         const cookie = req.cookies.token
         console.log(cookie)
         var userName = await findName(cookie)
         console.log(userName)
         res.render('home', {user: userName})
-    } catch (e) {
-    //this will eventually be handled by your error handling middleware
-        next(e) 
-    }
     /*
     if (cookie === undefined) {
         // no: set a new cookie
