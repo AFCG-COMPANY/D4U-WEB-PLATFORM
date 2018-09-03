@@ -6,8 +6,8 @@ const
 
 async function updateUser(req) {
     let cookie = req.cookies.token
-    let userName = req.body;
-    console.log(userName)
+    let userNewInfo = req.body
+    console.log(userNewInfo)
     console.log('find name cookie', cookie)
     if (cookie === undefined){
         return undefined

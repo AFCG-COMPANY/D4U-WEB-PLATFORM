@@ -76,7 +76,7 @@
 <div id="settings" class="tabcontent">
     <h3>Настройки</h3>
     <div class="grid">
-        <div class="grid__cell">
+        <div class="grid__cell col-md-8">
             <div class="form__group">
                 <h4>Название компании</h4>
                 <input type="text" class="field field--text company_name">
@@ -85,25 +85,36 @@
             <div class="form__group">
                 <h4>Сайт</h4>
                 <input type="text" class="field field--text company_site">
-
             </div>
 
             <div class="form__group">
-                <h4>Изображение профиля</h4>
-                <input type="file" id="filechooser">
-                <button id="save_profile_image" class="button button--wide" type="submit">Сохранить</button>
+                <h4>Дата создания компании</h4>
+                <input type="text" class="field field--text company_site">
+            </div>
+
+            <div class="form__group">
+                <h4>Страна</h4>
+                <input type="text" class="field field--text company_site">
+            </div>
+
+            <div class="form__group">
+                <h4>Город</h4>
+                <input type="text" class="field field--text company_site">
             </div>
 
             <div class="form__group">
                 <h4>Описание компании</h4>
-                <textarea id="subject" name="subject" placeholder="Расскажите о компании..." style="height:200px"></textarea>
+                <textarea id="subject" name="subject" placeholder="Расскажите о компании..." style="width: 400px; height:200px"></textarea>
             </div>
             <div class="form__group form__group--controls">
                 <button id="save_profile_info" class="button button--wide" type="submit">Сохранить</button>
             </div>
         </div>
-        <div class="grid__cell">
 
+        <div class="form__group col-md-4">
+            <h4>Изображение профиля</h4>
+            <input type="file" id="filechooser">
+            <button id="save_profile_image" class="button button--wide" type="submit">Сохранить</button>
         </div>
     </div>
 
@@ -172,11 +183,19 @@
     // сохранение информации
     function uploadInfo() {
         console.log('uploadinfo');
+        var newUserInfo = {};
+        newUserInfo['name'] = "Test name"
+        newUserInfo['site'] = "Test site"
+        newUserInfo['date'] = "2018/01/01"
+        newUserInfo['country'] = "Russia"
+        newUserInfo['city'] = "Moscow"
+
+        newUserInfo['transport_type_1'] = "2018/01/01"
+        newUserInfo['transport_type_2'] = "Russia"
+        newUserInfo['transport_type_3'] = "Moscow"
+
         $.post("/api/saveprofileinfo",
-                {
-                    name: "Donald Duck",
-                    city: "Duckburg"
-                });
+                newUserInfo);
         console.log('finish');
     }
 

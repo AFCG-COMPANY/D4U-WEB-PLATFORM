@@ -5,8 +5,7 @@ const
 
 
 router.post('/saveprofileinfo', async function(req, res, next) {
-    console.log(req.body);
-    /*
+
     const cookie = req.cookies.token;
     if (cookie){
         var updateResult = await updateUser(req);
@@ -17,7 +16,7 @@ router.post('/saveprofileinfo', async function(req, res, next) {
             res.send({'status': '500'})
         }
     }
-    */
+
     res.send({'status': '500'})
 
 })
