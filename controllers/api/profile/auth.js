@@ -17,8 +17,6 @@ router.post('/auth', function(req, res, next) {
             if (err) throw err;
             const dbo = db.db("d4u");
             dbo.collection("users").findOne({login: userResp['login'], password: userResp['password'], confirmed: true}, function(err, result) {
-                console.log({login: userResp['login'], password: userResp['password'], confirmed: true})
-                console.log(result)
                 if (result !== null) {
                     //res.cookie('token', result['token'], { maxAge: 900000, httpOnly: true })
                     //res.redirect('/')
@@ -37,7 +35,6 @@ router.post('/auth', function(req, res, next) {
             if (err) throw err;
             const dbo = db.db("d4u");
             dbo.collection("users").findOne({login: userResp['login']}, function(err, result) {
-                console.log(result)
                 if (result !== null){
                     res.send({'status': '400', 'message': 'Такой емаил уже есть!!'})
                 }
@@ -58,7 +55,6 @@ router.post('/auth', function(req, res, next) {
 
                     // запись в базу
                     dbo.collection("users").insertOne(userInfo, function(err, result) {
-                        console.log(result)
                         if (err) throw err
                         res.send({'status': '200', 'message': 'Мы вас зарегестрировали!!'})
                         db.close()
@@ -68,6 +64,6 @@ router.post('/auth', function(req, res, next) {
             })
         })
     }
-});
+})
 
 module.exports = router
