@@ -26,4 +26,16 @@ router.post('/request', function (req, res) {
     })
 })
 
+router.get('/passwords', (req, res) => {
+    const count = 5
+
+    // Generate some passwords
+    const passwords = [1, 2, 3, 4, 5]
+
+    // Return them as json
+    res.json(passwords)
+
+    console.log(`Sent ${count} passwords`)
+})
+
 module.exports = router
