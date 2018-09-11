@@ -8,6 +8,13 @@ import asyncComponent from "../utils/AsyncComponent"
 const AsyncHome = asyncComponent(() => import('../Home/Home'))
 const AsyncNotes = asyncComponent(() => import("../Notes/Notes"))
 
+
+const AsyncSearch = asyncComponent(() => import('../Search/Search'))
+const AsyncSearchResult = asyncComponent(() => import("../SearchResult/SearchResult"))
+const AsyncLogin = asyncComponent(() => import('../Login/Login'))
+const AsyncProfile = asyncComponent(() => import("../Profile/Profile"))
+const AsyncNotFound = asyncComponent(() => import("../NotFound/NotFound"))
+
 class App extends Component {
   render() {
     return (
@@ -32,6 +39,10 @@ class App extends Component {
                         path="/note"
                         exact
                         component={AsyncNotes}
+                    />
+
+                    <Route
+                        component={AsyncNotFound}
                     />
                 </Switch>
             </div>
