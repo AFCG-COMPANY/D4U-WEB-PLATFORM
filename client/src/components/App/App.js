@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import logo from '../../logo.svg'
 import './App.css'
 
-import { Route, Link, Switch, BrowserRouter } from "react-router-dom"
-import asyncComponent from "../utils/AsyncComponent"
+import { Route, Link, Switch, BrowserRouter } from 'react-router-dom'
+import asyncComponent from '../utils/AsyncComponent'
+import PrivateRoute from '../utils/PrivateRoute'
 
 const AsyncHome = asyncComponent(() => import('../Home/Home'))
 const AsyncNotes = asyncComponent(() => import("../Notes/Notes"))
@@ -39,6 +40,18 @@ class App extends Component {
                         path="/note"
                         exact
                         component={AsyncNotes}
+                    />
+
+                    <Route
+                        path="/login"
+                        exact
+                        component={AsyncLogin}
+                    />
+
+                    <PrivateRoute
+                        path="/profile"
+                        exact
+                        component={AsyncProfile}
                     />
 
                     <Route
