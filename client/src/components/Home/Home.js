@@ -1,28 +1,28 @@
-import Button from '@material-ui/core/Button';
-import React, { Component } from 'react';
+import Button from '@material-ui/core/Button'
+import React, { Component } from 'react'
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {email: '', password: ''};
+        this.state = {email: '', password: ''}
 
-        this.handleEmail = this.handleEmail.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEmail = this.handleEmail.bind(this)
+        this.handlePassword = this.handlePassword.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleEmail(event) {
-        this.setState({email: event.target.value});
+        this.setState({email: event.target.value})
     }
 
     handlePassword(event) {
-        this.setState({password: event.target.value});
+        this.setState({password: event.target.value})
     }
 
     handleSubmit(event) {
-        alert(this.state.email + ' ' + this.state.password);
-        window['user_info'] = this.state.email + ' ' + this.state.password;
-        event.preventDefault();
+        alert(this.state.email + ' ' + this.state.password)
+        window['user_info'] = this.state.email + ' ' + this.state.password
+        event.preventDefault()
     }
 
     render() {
@@ -44,6 +44,6 @@ export default class Home extends Component {
                     Hello World
                 </Button>
             </div>
-        );
+        )
     }
 }
