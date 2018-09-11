@@ -4,17 +4,17 @@ import './App.css'
 
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom'
 import asyncComponent from '../utils/AsyncComponent'
-import PrivateRoute from '../utils/PrivateRoute'
 
 const AsyncHome = asyncComponent(() => import('../Home/Home'))
 const AsyncNotes = asyncComponent(() => import("../Notes/Notes"))
 
 
 const AsyncSearch = asyncComponent(() => import('../Search/Search'))
-const AsyncSearchResult = asyncComponent(() => import("../SearchResult/SearchResult"))
+const AsyncSearchResult = asyncComponent(() => import('../SearchResult/SearchResult'))
 const AsyncLogin = asyncComponent(() => import('../Login/Login'))
-const AsyncProfile = asyncComponent(() => import("../Profile/Profile"))
-const AsyncNotFound = asyncComponent(() => import("../NotFound/NotFound"))
+const AsyncProfile = asyncComponent(() => import('../Profile/Profile'))
+const AsyncNotFound = asyncComponent(() => import('../NotFound/NotFound'))
+const AsyncPrivateRoute = asyncComponent(() => import('../utils/PrivateRoute'))
 
 class App extends Component {
   render() {
@@ -48,7 +48,7 @@ class App extends Component {
                         component={AsyncLogin}
                     />
 
-                    <PrivateRoute
+                    <AsyncPrivateRoute
                         path="/profile"
                         exact
                         component={AsyncProfile}
