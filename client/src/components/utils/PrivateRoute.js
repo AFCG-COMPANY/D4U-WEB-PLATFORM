@@ -7,9 +7,14 @@ import {
 import getAuth from './getAuth'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-        component={Component}
-    />
+    false ? (
+        <Route
+            component={Component}
+        />) : (
+           <Redirect to={{pathname: "/login"}}/>
+    )
 )
 
 export default PrivateRoute
+
+
