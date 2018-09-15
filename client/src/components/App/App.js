@@ -3,18 +3,18 @@ import logo from '../../logo.svg'
 import './App.css'
 
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom'
-import asyncComponent from '../utils/AsyncComponent'
 
-const AsyncHome = asyncComponent(() => import('../Home/Home'))
-const AsyncNotes = asyncComponent(() => import("../Notes/Notes"))
+import Home from '../Home/Home'
+import Notes from '../Notes/Notes'
 
 
-const AsyncSearch = asyncComponent(() => import('../Search/Search'))
-const AsyncSearchResult = asyncComponent(() => import('../SearchResult/SearchResult'))
-const AsyncLogin = asyncComponent(() => import('../Login/Login'))
-const AsyncProfile = asyncComponent(() => import('../Profile/Profile'))
-const AsyncNotFound = asyncComponent(() => import('../NotFound/NotFound'))
-const AsyncPrivateRoute = asyncComponent(() => import('../utils/PrivateRoute'))
+import Search from '../Search/Search'
+import SearchResult from '../SearchResult/SearchResult'
+import Login from '../Login/Login'
+import Profile from'../Profile/Profile'
+import NotFound from '../NotFound/NotFound'
+import PrivateRoute from '../utils/PrivateRoute'
+
 
 class App extends Component {
   render() {
@@ -25,29 +25,29 @@ class App extends Component {
                     <Route
                         path="/"
                         exact
-                        component={AsyncHome}
+                        component={Home}
                     />
 
                     <Route
                         path="/note"
                         exact
-                        component={AsyncNotes}
+                        component={Notes}
                     />
 
                     <Route
                         path="/login"
                         exact
-                        component={AsyncLogin}
+                        component={Login}
                     />
 
-                    <AsyncPrivateRoute
+                    <PrivateRoute
                         path="/profile"
                         exact
-                        component={AsyncProfile}
+                        component={Profile}
                     />
 
                     <Route
-                        component={AsyncNotFound}
+                        component={NotFound}
                     />
                 </Switch>
             </div>

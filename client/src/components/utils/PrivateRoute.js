@@ -8,23 +8,8 @@ import getAuth from './getAuth'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
-        {...rest}
-        render={props =>
-            {
-                getAuth()
-                true ? (
-                    <Component {...props} />
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: { from: props.location }
-                        }}
-                    />
-                )
-            }
-        }
+        component={Component}
     />
-);
+)
 
 export default PrivateRoute

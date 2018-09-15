@@ -1,9 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-const NotFound = () =>
+import MenuAppBar from '../utils/MenuAppBar/MenuAppBar'
+
+const Login = () =>
     <div>
-        <h3>404 page not found</h3>
-        <p>We are sorry but the page you are looking for does not exist.</p>
+        <MenuAppBar/>
+        <div>
+            <h3>Login</h3>
+        </div>
     </div>
 
-export default NotFound;
+export default Login
