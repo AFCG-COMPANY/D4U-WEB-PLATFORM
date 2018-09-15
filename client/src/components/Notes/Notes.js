@@ -56,7 +56,7 @@ class Notes extends Component {
                     </div>
                 )}
             </div>
-        );
+        )
     }
 }
 

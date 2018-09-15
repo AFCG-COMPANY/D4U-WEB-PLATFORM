@@ -27,19 +27,7 @@ class MenuAppBar extends React.Component {
     state = {
         auth: true,
         anchorEl: null,
-    };
-
-    handleChange = event => {
-        this.setState({ auth: event.target.checked });
-    };
-
-    handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
-
-    handleClose = () => {
-        this.setState({ anchorEl: null });
-    };
+    }
 
     render() {
         const { classes } = this.props;
@@ -50,15 +38,12 @@ class MenuAppBar extends React.Component {
             <div className={classes.root}>
                 <AppBar position="static">
                     <Toolbar>
-                        <Typography variant="title" color="inherit" className={classes.grow}>
+                        <Typography component={Link} to='/' variant="title" color="inherit" className={classes.grow}>
                             D4U
                         </Typography>
                         {auth ? (
                             <div>
                                 <IconButton component={Link} to='/profile'
-                                aria-owns={open ? 'menu-appbar' : null}
-                                aria-haspopup="true"
-                                onClick={this.handleMenu}
                                 color="inherit"
                             >
                                 <AccountCircle />

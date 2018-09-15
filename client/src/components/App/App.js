@@ -25,7 +25,12 @@ class App extends Component {
                     <Route
                         path="/"
                         exact
-                        component={Home}
+                        component={Search}
+                    />
+
+                    <Route
+                        path="/search/:id"
+                        component={SearchResult}
                     />
 
                     <Route
