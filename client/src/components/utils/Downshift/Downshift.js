@@ -140,9 +140,13 @@ const styles = theme => ({
 function DownshiftCity(props) {
     const { classes } = props;
 
+    function f(selectedItem, stateAndHelpers) {
+        console.log(selectedItem, stateAndHelpers)
+    }
+
     return (
         <div className={classes.root}>
-            <Downshift id="downshift-simple">
+            <Downshift id="downshift-simple" onSelect={f}>
                 {({
                       getInputProps,
                       getItemProps,
@@ -186,4 +190,4 @@ DownshiftCity.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DownshiftCity);
+export {renderInput, getSuggestions, renderSuggestion}

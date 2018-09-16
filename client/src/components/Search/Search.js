@@ -28,7 +28,7 @@ class Search extends React.Component {
                 <Button component={Link} color='inherit' to={'/search/' + this.state.resultSearch}>
                     Search {this.state.resultSearch}
                 </Button>
-                <Album/>
+                <Album history={this.props.history}/>
             </div>
         );
     }

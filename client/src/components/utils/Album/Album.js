@@ -1,15 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
+import Downshift from 'downshift';
 
-import Downshift from '../Downshift/Downshift'
-import Datetimepicker from '../Datetimepicker/Datetimepicker'
-import DateFormatInput from "material-ui-next-pickers/dist/datepicker";
+import { renderInput, getSuggestions, renderSuggestion } from '../Downshift/Downshift'
+import DateFormatInput from "material-ui-next-pickers/dist/datepicker"
+import Paper from "@material-ui/core/Paper/Paper";
 
 const styles = theme => ({
     appBar: {
@@ -61,11 +63,31 @@ const styles = theme => ({
 
 
 function Album(props) {
-    const { classes } = props;
+    const { classes } = props
+    var state = {resultRec: ''}
 
-    function onChangeDate (date) {
+    function onFirstDateChange (date) {
         console.log('Date: ', date)
-        this.setState({date})
+        //state['firstDate'] = date
+    }
+
+    function onSecondDateChange (date) {
+        console.log('Date: ', date)
+        //state['secondDate'] = date
+    }
+
+    function onFirstCityChange (selectedItem, stateAndHelpers) {
+        console.log(1)
+        console.log(selectedItem, stateAndHelpers)
+    }
+
+    function onSecondCityChange(selectedItem) {
+        console.log(selectedItem)
+    }
+    
+    function onSearchRec() {
+        console.log(props)
+        props.history.push('/note')
     }
 
     return (
@@ -84,7 +106,7 @@ function Album(props) {
                         <div className={classes.heroButtons}>
                             <Grid container spacing={16} justify="center">
                                 <Grid item>
-                                    <Button variant="contained" color="primary">
+                                    <Button variant="contained" color="primary" onClick={onSearchRec}>
                                         Найти перевозчика
                                     </Button>
                                 </Grid>
@@ -100,16 +122,90 @@ function Album(props) {
                         {/* End hero unit */}
                         <Grid container spacing={40}>
                             <Grid item key={1} sm={6} md={4} lg={3}>
-                                <Downshift/>
+                                <div className={classes.root}>
+                                    <Downshift id="downshift-simple" onSelect={onFirstCityChange}>
+                                        {({
+                                              getInputProps,
+                                              getItemProps,
+                                              getMenuProps,
+                                              highlightedIndex,
+                                              inputValue,
+                                              isOpen,
+                                              selectedItem,
+                                          }) => (
+                                            <div className={classes.container}>
+                                                {renderInput({
+                                                    fullWidth: true,
+                                                    classes,
+                                                    InputProps: getInputProps({
+                                                        placeholder: 'Search a country (start with a)',
+                                                    }),
+                                                })}
+                                                <div {...getMenuProps()}>
+                                                    {isOpen ? (
+                                                        <Paper className={classes.paper} square>
+                                                            {getSuggestions(inputValue).map((suggestion, index) =>
+                                                                renderSuggestion({
+                                                                    suggestion,
+                                                                    index,
+                                                                    itemProps: getItemProps({ item: suggestion.label }),
+                                                                    highlightedIndex,
+                                                                    selectedItem,
+                                                                }),
+                                                            )}
+                                                        </Paper>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </Downshift>
+                                </div>
                             </Grid>
                             <Grid item key={2} sm={6} md={4} lg={3}>
-                                <Downshift/>
+                                <div className={classes.root}>
+                                    <Downshift id="downshift-simple" onSelect={onSecondCityChange}>
+                                        {({
+                                              getInputProps,
+                                              getItemProps,
+                                              getMenuProps,
+                                              highlightedIndex,
+                                              inputValue,
+                                              isOpen,
+                                              selectedItem,
+                                          }) => (
+                                            <div className={classes.container}>
+                                                {renderInput({
+                                                    fullWidth: true,
+                                                    classes,
+                                                    InputProps: getInputProps({
+                                                        placeholder: 'Search a country (start with a)',
+                                                    }),
+                                                })}
+                                                <div {...getMenuProps()}>
+                                                    {isOpen ? (
+                                                        <Paper className={classes.paper} square>
+                                                            {getSuggestions(inputValue).map((suggestion, index) =>
+                                                                renderSuggestion({
+                                                                    suggestion,
+                                                                    index,
+                                                                    itemProps: getItemProps({ item: suggestion.label }),
+                                                                    highlightedIndex,
+                                                                    selectedItem,
+                                                                }),
+                                                            )}
+                                                        </Paper>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </Downshift>
+                                </div>
                             </Grid>
                             <Grid item key={3} sm={6} md={4} lg={3}>
-                                <DateFormatInput name='date-input'/>
+                                <DateFormatInput name='date-input' onChange={onFirstDateChange}/>
                             </Grid>
                             <Grid item key={4} sm={6} md={4} lg={3}>
-                                <DateFormatInput name='date-input'/>
+                                <DateFormatInput name='date-input' onChange={onSecondDateChange}/>
                             </Grid>
                         </Grid>
                     </div>
