@@ -13,7 +13,7 @@ import SearchResult from '../SearchResult/SearchResult'
 import Login from '../Login/Login'
 import Profile from'../Profile/Profile'
 import NotFound from '../NotFound/NotFound'
-import PrivateRoute from '../utils/PrivateRoute'
+import PrivateRoute from '../utils/PrivateRoute/PrivateRoute'
 
 
 class App extends Component {
