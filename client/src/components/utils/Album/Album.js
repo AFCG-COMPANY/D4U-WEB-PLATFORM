@@ -67,17 +67,14 @@ function Album(props) {
     var state = {resultRec: ''}
 
     function onFirstDateChange (date) {
-        console.log('Date: ', date)
         //state['firstDate'] = date
     }
 
     function onSecondDateChange (date) {
-        console.log('Date: ', date)
         //state['secondDate'] = date
     }
 
     function onFirstCityChange (selectedItem, stateAndHelpers) {
-        console.log(1)
         console.log(selectedItem, stateAndHelpers)
     }
 
@@ -122,8 +119,7 @@ function Album(props) {
                         {/* End hero unit */}
                         <Grid container spacing={40}>
                             <Grid item key={1} sm={6} md={4} lg={3}>
-                                <div className={classes.root}>
-                                    <Downshift id="downshift-simple" onSelect={onFirstCityChange}>
+                                <Downshift id="downshift-simple" onSelect={onFirstCityChange}>
                                         {({
                                               getInputProps,
                                               getItemProps,
@@ -138,7 +134,7 @@ function Album(props) {
                                                     fullWidth: true,
                                                     classes,
                                                     InputProps: getInputProps({
-                                                        placeholder: 'Search a country (start with a)',
+                                                        placeholder: 'город загрузки',
                                                     }),
                                                 })}
                                                 <div {...getMenuProps()}>
@@ -159,11 +155,9 @@ function Album(props) {
                                             </div>
                                         )}
                                     </Downshift>
-                                </div>
                             </Grid>
                             <Grid item key={2} sm={6} md={4} lg={3}>
-                                <div className={classes.root}>
-                                    <Downshift id="downshift-simple" onSelect={onSecondCityChange}>
+                                <Downshift id="downshift-simple" onSelect={onSecondCityChange}>
                                         {({
                                               getInputProps,
                                               getItemProps,
@@ -178,7 +172,7 @@ function Album(props) {
                                                     fullWidth: true,
                                                     classes,
                                                     InputProps: getInputProps({
-                                                        placeholder: 'Search a country (start with a)',
+                                                        placeholder: 'город выгрузки',
                                                     }),
                                                 })}
                                                 <div {...getMenuProps()}>
@@ -199,7 +193,6 @@ function Album(props) {
                                             </div>
                                         )}
                                     </Downshift>
-                                </div>
                             </Grid>
                             <Grid item key={3} sm={6} md={4} lg={3}>
                                 <DateFormatInput name='date-input' onChange={onFirstDateChange}/>

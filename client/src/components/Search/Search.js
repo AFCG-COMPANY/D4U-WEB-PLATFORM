@@ -19,15 +19,6 @@ class Search extends React.Component {
         return (
             <div>
                 <MenuAppBar/>
-                <h3>Search</h3>
-                <input
-                    id="new-todo"
-                    onChange={this.handleChange}
-
-                />
-                <Button component={Link} color='inherit' to={'/search/' + this.state.resultSearch}>
-                    Search {this.state.resultSearch}
-                </Button>
                 <Album history={this.props.history}/>
             </div>
         );
