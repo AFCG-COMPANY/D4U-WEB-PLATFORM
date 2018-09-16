@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Downshift from '../Downshift/Downshift'
 import Datetimepicker from '../Datetimepicker/Datetimepicker'
+import DateFormatInput from "material-ui-next-pickers/dist/datepicker";
 
 const styles = theme => ({
     appBar: {
@@ -58,10 +59,14 @@ const styles = theme => ({
     },
 });
 
-const cards = [1, 2, 3, 4];
 
 function Album(props) {
     const { classes } = props;
+
+    function onChangeDate (date) {
+        console.log('Date: ', date)
+        this.setState({date})
+    }
 
     return (
         <React.Fragment>
@@ -94,11 +99,18 @@ function Album(props) {
                     <div className={classNames(classes.layout, classes.cardGrid)}>
                         {/* End hero unit */}
                         <Grid container spacing={40}>
-                            {cards.map(card => (
-                                <Grid item key={card} sm={6} md={4} lg={3}>
-                                    <Datetimepicker/>
-                                </Grid>
-                            ))}
+                            <Grid item key={1} sm={6} md={4} lg={3}>
+                                <Downshift/>
+                            </Grid>
+                            <Grid item key={2} sm={6} md={4} lg={3}>
+                                <Downshift/>
+                            </Grid>
+                            <Grid item key={3} sm={6} md={4} lg={3}>
+                                <DateFormatInput name='date-input'/>
+                            </Grid>
+                            <Grid item key={4} sm={6} md={4} lg={3}>
+                                <DateFormatInput name='date-input'/>
+                            </Grid>
                         </Grid>
                     </div>
                 </div>

@@ -6,10 +6,6 @@ export default class Datetimepicker extends React.Component {
         console.log('Date: ', date)
         this.setState({date})
     }
-    onChangeTime = (time) => {
-        console.log('Time: ', time)
-        this.setState({time})
-    }
     render() {
         return (
             <div>
