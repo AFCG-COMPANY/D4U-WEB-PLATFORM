@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import Downshift from '../Downshift/Downshift'
+import Datetimepicker from '../Datetimepicker/Datetimepicker'
 
 const styles = theme => ({
     appBar: {
@@ -73,20 +74,18 @@ function Album(props) {
                             Delivery 4 you
                         </Typography>
                         <Typography variant="title" align="center" color="textSecondary" paragraph>
-                            Something short and leading about the collection below—its contents, the creator, etc.
-                            Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-                            entirely.
+                            Сервис подбирает под загрузки ближайшего подходящего перевозчика, что позволяет снизить стоимость перевозок до 20% и найти тс по любому маршруту за 15 минут.
                         </Typography>
                         <div className={classes.heroButtons}>
                             <Grid container spacing={16} justify="center">
                                 <Grid item>
                                     <Button variant="contained" color="primary">
-                                        Main call to action
+                                        Найти перевозчика
                                     </Button>
                                 </Grid>
                                 <Grid item>
                                     <Button variant="outlined" color="primary">
-                                        Secondary action
+                                        Сложные настройки
                                     </Button>
                                 </Grid>
                             </Grid>
@@ -97,7 +96,7 @@ function Album(props) {
                         <Grid container spacing={40}>
                             {cards.map(card => (
                                 <Grid item key={card} sm={6} md={4} lg={3}>
-                                    <Downshift/>
+                                    <Datetimepicker/>
                                 </Grid>
                             ))}
                         </Grid>

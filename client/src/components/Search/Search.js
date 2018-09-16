@@ -28,33 +28,7 @@ class Search extends React.Component {
                 <Button component={Link} color='inherit' to={'/search/' + this.state.resultSearch}>
                     Search {this.state.resultSearch}
                 </Button>
-
-                <div>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Paper>xs=12</Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <Paper>xs=12 sm=6</Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <Paper>xs=12 sm=6</Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <DownshiftCity />
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <DownshiftCity />
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <DownshiftCity />
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <DownshiftCity />
-                        </Grid>
-                    </Grid>
-                    <Album/>
-                </div>
+                <Album/>
             </div>
         );
     }
