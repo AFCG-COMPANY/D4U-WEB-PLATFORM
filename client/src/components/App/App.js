@@ -14,6 +14,7 @@ import Login from '../Login/Login'
 import Profile from'../Profile/Profile'
 import NotFound from '../NotFound/NotFound'
 import PrivateRoute from '../utils/PrivateRoute/PrivateRoute'
+import CreateList from '../CreateList/CreateList'
 
 
 class App extends Component {
@@ -37,6 +38,12 @@ class App extends Component {
                         path="/note"
                         exact
                         component={Notes}
+                    />
+
+                    <Route
+                        path="/createlist"
+                        exact
+                        component={CreateList}
                     />
 
                     <Route
