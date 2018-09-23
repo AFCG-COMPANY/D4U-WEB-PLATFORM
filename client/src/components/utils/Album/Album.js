@@ -95,124 +95,28 @@ function Album(props) {
                 <div className={classes.heroUnit}>
                     <div className={classes.heroContent}>
                         <Typography variant="display3" align="center" color="textPrimary" gutterBottom>
-                            Delivery 4 you
+                            Let Me Check
                         </Typography>
                         <Typography variant="title" align="center" color="textSecondary" paragraph>
-                            Сервис подбирает под загрузки ближайшего подходящего перевозчика, что позволяет снизить стоимость перевозок до 20% и найти тс по любому маршруту за 15 минут.
+                            Контроль над проверками.
                         </Typography>
                         <div className={classes.heroButtons}>
                             <Grid container spacing={16} justify="center">
                                 <Grid item>
                                     <Button variant="contained" color="primary" onClick={onSearchRec}>
-                                        Найти перевозчика
+                                        Для бизнеса
                                     </Button>
                                 </Grid>
                                 <Grid item>
-                                    <Button variant="outlined" color="primary">
-                                        Сложные настройки
+                                    <Button variant="contained" color="primary">
+                                        Для инспектра
                                     </Button>
                                 </Grid>
                             </Grid>
                         </div>
                     </div>
-                    <div className={classNames(classes.layout, classes.cardGrid)}>
-                        {/* End hero unit */}
-                        <Grid container spacing={40}>
-                            <Grid item key={1} sm={6} md={4} lg={3}>
-                                <Downshift id="downshift-simple" onSelect={onFirstCityChange}>
-                                        {({
-                                              getInputProps,
-                                              getItemProps,
-                                              getMenuProps,
-                                              highlightedIndex,
-                                              inputValue,
-                                              isOpen,
-                                              selectedItem,
-                                          }) => (
-                                            <div className={classes.container}>
-                                                {renderInput({
-                                                    fullWidth: true,
-                                                    classes,
-                                                    InputProps: getInputProps({
-                                                        placeholder: 'город загрузки',
-                                                    }),
-                                                })}
-                                                <div {...getMenuProps()}>
-                                                    {isOpen ? (
-                                                        <Paper className={classes.paper} square>
-                                                            {getSuggestions(inputValue).map((suggestion, index) =>
-                                                                renderSuggestion({
-                                                                    suggestion,
-                                                                    index,
-                                                                    itemProps: getItemProps({ item: suggestion.label }),
-                                                                    highlightedIndex,
-                                                                    selectedItem,
-                                                                }),
-                                                            )}
-                                                        </Paper>
-                                                    ) : null}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </Downshift>
-                            </Grid>
-                            <Grid item key={2} sm={6} md={4} lg={3}>
-                                <Downshift id="downshift-simple" onSelect={onSecondCityChange}>
-                                        {({
-                                              getInputProps,
-                                              getItemProps,
-                                              getMenuProps,
-                                              highlightedIndex,
-                                              inputValue,
-                                              isOpen,
-                                              selectedItem,
-                                          }) => (
-                                            <div className={classes.container}>
-                                                {renderInput({
-                                                    fullWidth: true,
-                                                    classes,
-                                                    InputProps: getInputProps({
-                                                        placeholder: 'город выгрузки',
-                                                    }),
-                                                })}
-                                                <div {...getMenuProps()}>
-                                                    {isOpen ? (
-                                                        <Paper className={classes.paper} square>
-                                                            {getSuggestions(inputValue).map((suggestion, index) =>
-                                                                renderSuggestion({
-                                                                    suggestion,
-                                                                    index,
-                                                                    itemProps: getItemProps({ item: suggestion.label }),
-                                                                    highlightedIndex,
-                                                                    selectedItem,
-                                                                }),
-                                                            )}
-                                                        </Paper>
-                                                    ) : null}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </Downshift>
-                            </Grid>
-                            <Grid item key={3} sm={6} md={4} lg={3}>
-                                <DateFormatInput name='date-input' onChange={onFirstDateChange}/>
-                            </Grid>
-                            <Grid item key={4} sm={6} md={4} lg={3}>
-                                <DateFormatInput name='date-input' onChange={onSecondDateChange}/>
-                            </Grid>
-                        </Grid>
-                    </div>
                 </div>
             </main>
-            {/* Footer */}
-            <footer className={classes.footer}>
-                <Typography variant="title" align="center" gutterBottom>
-                    Footer
-                </Typography>
-                <Typography variant="subheading" align="center" color="textSecondary" component="p">
-                    Something here to give the footer a purpose!
-                </Typography>
-            </footer>
             {/* End footer */}
         </React.Fragment>
     );

@@ -37,9 +37,9 @@ class MenuAppBar extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar position="static">
-                    <Toolbar>
-                        <Typography component={Link} to='/' variant="title" color="inherit" className={classes.grow}>
-                            D4U
+                    <Toolbar color="aaa">
+                        <Typography variant="title" color="inherit" className={classes.grow}>
+                            Let Me Check
                         </Typography>
                         {auth ? (
                             <div>
