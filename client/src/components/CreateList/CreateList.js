@@ -1,7 +1,7 @@
 import React from 'react'
 
 import MenuAppBar from '../utils/MenuAppBar/MenuAppBar'
-import List from '../utils/LIst/List'
+import List from '../utils/List/List'
 
 class CreateList extends React.Component {
     constructor(props) {
